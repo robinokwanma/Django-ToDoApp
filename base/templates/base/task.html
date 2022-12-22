@@ -1,0 +1,11 @@
+
+
+<h2>Task: {{task}}</h2>
+
+<h4>Your Task Details</h4>
+<p>{{task.description}}</p>
+
+<p>Completed?- {{task.complete}}</p>
+<p></p>
+
+<a href="{% url 'taskedit' task.id %}">Update this Task</a>

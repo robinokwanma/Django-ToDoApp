@@ -1,0 +1,90 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<div class="headerdetail" style= "background-color: rgb(88, 29, 165);">
+    <div class="userdetail">
+        <h1>Hello, {{request.user|title}}</h1>
+        <h3>You have {{count}} <i>incomplete task{{count|pluralize:'s'}}</i></h3>
+    </div>
+    <a href="{% url 'logout' %}">Logout</a>
+
+    
+    
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'register' %}">Register</a>
+    
+{% endif %}
+    
+<hr/>
+</div>
+
+<h1>My TO DO List</h1>
+
+<div class="searcharea">
+    <div class="addtolist">
+        <a href="{% url 'taskform' %}">➕Add Task</a>
+    </div>
+    <div class="addtolist">
+        <form method='GET'>
+            <input type=text name="search-area" value="{{search_input}}"/>
+            <input class="button" type=submit value="search"/>
+        </form>
+    </div>
+</div>
+
+<hr/>
+
+
+<div class="task_item_wrapper">
+    {% for task in tasks %}
+        <div class="task_item_detail">
+            {% if task.complete %}
+                <div class="task-title">
+                    <div class="task-complete-icon">
+                        <i>🟢<s><a href="{% url 'taskedit' task.id%}"> {{task}}</a></s></i>
+                    </div>
+                    <div class="delete-button">
+                        <a class="delete" href="{% url 'taskdelete' task.id%}"> ❌Delete</a>
+                    </div>
+                </div>
+                <hr/>
+                {% else %}
+                <div class="task-title">
+                    <div class="task-incomplete-icon">
+                        <a href="{% url 'taskedit' task.id%}"> {{task}}</a>
+                    </div>
+                    <div class="delete-button">
+                        <a class="delete" href="{% url 'taskdelete' task.id%}"> ❌Delete</a>
+                    </div>
+                </div>
+            <hr/>
+            {%endif%}
+        </div>
+
+    {%empty%}
+    <h2>No item in list</h2>
+    {% endfor %}
+</div>
+{% comment %} <div class='Table_list'>
+<table >
+    <tr>
+        <th>Item</th>
+        <th></th>
+        <th></th>
+    </tr>
+    
+    <tr>
+
+        <td></td>
+        {% comment %} <td><a href="{% url 'task' task.id%}"> View</a></td> {% endcomment %}
+        {% comment %} <td></td>
+        <td></td>
+    </tr>
+ 
+    
+</table>
+</div> {% endcomment %}
+{% endblock content %}

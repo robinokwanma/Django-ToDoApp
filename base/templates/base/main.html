@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>To Do List</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow_Condensed">
+        <style>
+            body {
+                background-color: steelblue;
+                padding-top: 50px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            
+            @font-face {
+                font-family: 'Barlow_Condensed';
+                src: url('./BarlowCondensed-BlackItalic.ttf');
+            }
+            
+            .userdetail {
+                color: aliceblue;
+            }
+            
+            .headerdetail>a {
+                color: white;
+            }
+            
+            .searcharea {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding-left: 50px;
+                padding-right: 50px;
+                padding-bottom: 50px;
+            }
+            
+            .task-title {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding-left: 50px;
+                padding-right: 50px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+            
+            label {
+                padding-top: 10px !important;
+                display: block
+            }
+            
+            input[type=text],
+            input[type=password],
+            textarea, .inputfield {
+                border: 2px solid purple;
+                border-radius: 5px;
+                padding: 10px;
+                width: 90%;
+            }
+            
+            .button {
+                border: 1px solid white;
+                background-color: purple;
+                color: white;
+                padding: 10px;
+                font-size: 14px;
+                cursor: pointer;
+                text-decoration: none;
+            }
+            .cdeleteform{
+                padding-bottom: 10px;
+            }
+            .addform, .loginform, .regform{
+                padding-bottom: 10px;
+                padding-top: 10px;
+
+            }
+
+            .confirmdelete{
+                font-size: 2rem;
+                color: red;
+                
+            }
+            
+            .container {
+                background-color: aliceblue;
+                text-align: center;
+                margin: auto;
+                max-width: 550px;
+                font-family: 'Barlow_Condensed';
+                -webkit-box-shadow: 3px 3px 15px -6px;
+                box-shadow: 3px 3px 15px -6px;
+            }
+            
+            div>a {
+                color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            
+            {% block content %}
+                
+            {% endblock content %}
+                
+        </div>
+        
+        <script src="" async defer></script>
+    </body>
+</html>

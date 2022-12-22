@@ -1,0 +1,12 @@
+{% extends 'base/main.html' %}
+
+
+{% block content %}
+
+<form action="" method="post" class="cdeleteform">
+    {% csrf_token %}
+    <p class="confirmdelete">Are You Sure You want to Delete this task?</p>
+    <input class="button" type="submit" value="Yes, Delete!">
+    <a href="{% url 'tasks' %}">No, Go back.</a>
+</form>
+{% endblock content %}
